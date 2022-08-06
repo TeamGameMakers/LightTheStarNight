@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Utilities;
 
-namespace Characters.Monsters
+namespace Characters
 {
     public class MonsterIdleState: MonsterState
     {

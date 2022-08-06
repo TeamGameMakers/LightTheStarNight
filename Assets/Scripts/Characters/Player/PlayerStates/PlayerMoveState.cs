@@ -9,20 +9,18 @@ namespace Characters
         
         public PlayerMoveState(Player player, string name) : base(player, name) { }
 
+        public override void Enter()
+        {
+            base.Enter();
+
+            MoveDirection();
+        }
+
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
 
-            if (InputHandler.NormInputX != 0)
-            {
-                _core.Movement.SetVelocityX(InputHandler.NormInputX * _data.speed);
-                _core.Movement.SetVelocityY(0);
-            }
-            else if (InputHandler.NormInputY != 0)
-            {
-                _core.Movement.SetVelocityY(InputHandler.NormInputY * _data.speed);
-                _core.Movement.SetVelocityX(0);
-            }
+            MoveDirection();
         }
 
         public override void LogicUpdate()
@@ -35,6 +33,20 @@ namespace Characters
             {
                 _anim.SetFloat(_animHashFloatX, _core.Movement.CurrentVelocity.x);
                 _anim.SetFloat(animHashFloatY, _core.Movement.CurrentVelocity.y);
+            }
+        }
+
+        private void MoveDirection()
+        {
+            if (InputHandler.NormInputX != 0)
+            {
+                _core.Movement.SetVelocityX(InputHandler.NormInputX * _data.speed);
+                _core.Movement.SetVelocityY(0);
+            }
+            else if (InputHandler.NormInputY != 0)
+            {
+                _core.Movement.SetVelocityY(InputHandler.NormInputY * _data.speed);
+                _core.Movement.SetVelocityX(0);
             }
         }
     }

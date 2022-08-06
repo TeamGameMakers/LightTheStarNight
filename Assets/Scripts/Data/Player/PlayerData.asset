@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   speed: 3
-  hasFlashLight: 0
+  hasFlashLight: 1
   lightRadius: 3
   lightAngle: 100
   lightDamage: 1
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   maxPower: 30
   powerUsingSpeed: 1
-  powerRemaining: 30
+  powerRemaining: 569.76117

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Characters.Monsters
+namespace Characters
 {
     public class MonsterDieState : MonsterState
     {
@@ -16,6 +16,7 @@ namespace Characters.Monsters
         {
             base.Enter();
             _monster.StartCoroutine(MonsterFade(_data.fadeSpeed));
+            _core.AIMovement.StopMoving();
         }
 
         private IEnumerator MonsterFade(float fadeSpeed)

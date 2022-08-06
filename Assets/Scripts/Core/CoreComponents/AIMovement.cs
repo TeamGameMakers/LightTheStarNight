@@ -39,7 +39,7 @@ namespace Core
         
         private void OnDisable()
         {
-           _ai.onSearchPath -= Update;
+            _ai.onSearchPath -= Update;
         }
         
         // 不知道为啥，反正 onSearchPath必须接收 Update
@@ -50,5 +50,6 @@ namespace Core
         }
 
         public void SetSpeed(float speed) => _ai.maxSpeed = speed;
+        public void StopMoving() => _ai.isStopped = true;
     }
 }
