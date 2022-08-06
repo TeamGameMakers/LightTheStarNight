@@ -22,7 +22,7 @@ namespace UI
         private void Init()
         {
             _powerRemaining = GetControl<Image>("Remaining");
-            EventCenter.Instance.AddEventListener<float, bool>("UseBatteryPower", UseBatteryPower);
+            EventCenter.Instance.AddFuncListener<float, bool>("UseBatteryPower", UseBatteryPower);
         }
 
         private void Update()
