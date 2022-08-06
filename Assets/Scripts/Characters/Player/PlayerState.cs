@@ -1,9 +1,9 @@
-using Base.FSM;
+using Base;
 using Core;
 using Data;
 using UnityEngine;
 
-namespace Characters.Player
+namespace Characters
 {
     public class PlayerState : BaseState
     {
@@ -14,11 +14,9 @@ namespace Characters.Player
         protected readonly GameCore _core;
         protected readonly PlayerDataSO _data;
 
-        protected Vector2 InputVec2 { get; private set; }
-
         protected PlayerState(Player player, string name) : base(player.StateMachine)
         {
-            this._player = player;
+            _player = player;
             _animBoolHash = Animator.StringToHash(name);
 
             _anim = player.Anim;
@@ -30,11 +28,6 @@ namespace Characters.Player
         public override void Enter()
         {
             _anim.SetBool(_animBoolHash, true);
-        }
-
-        public override void LogicUpdate()
-        {
-            InputVec2 = InputHandler.RawMoveInput;
         }
 
         public override void Exit()

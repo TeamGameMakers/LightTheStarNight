@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Characters.Player
+namespace Characters
 {
     public sealed class PlayerIdleState: PlayerState
     {
-        public PlayerIdleState(global::Characters.Player.Player player, string name) : base(player, name) { }
+        public PlayerIdleState(Player player, string name) : base(player, name) { }
 
         public override void Enter()
         {
@@ -22,7 +22,7 @@ namespace Characters.Player
         {
             base.LogicUpdate();
 
-            if (InputVec2 != Vector2.zero) 
+            if (InputHandler.RawMoveInput != Vector2.zero) 
                 StateMachine.ChangeState(_player.MoveState);
         }
     }

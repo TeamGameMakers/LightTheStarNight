@@ -1,6 +1,6 @@
-﻿using Base.FSM;
+﻿using Base;
 
-namespace Characters.Player
+namespace Characters
 {
     public class PlayerStateMachine: BaseStateMachine
     {

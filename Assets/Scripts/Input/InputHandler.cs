@@ -10,7 +10,7 @@ public class InputHandler : SingletonMono<InputHandler>
     private InputActionMap _playerMap;
     private InputActionMap _cameraMap;
     private InputActionMap _lockPickMap;
-    
+
     #region Value Getter
     
     /// <summary>
@@ -39,19 +39,14 @@ public class InputHandler : SingletonMono<InputHandler>
     public static bool InteractPressed { get; private set; }
     
     /// <summary>
-    /// 按下退出键
+    /// 按下手电按钮
     /// </summary>
-    public static bool ExitPressed { get; private set; }
+    public static bool LightPressed { get; private set; }
     
     /// <summary>
-    /// 按下顶锁键
+    /// 按下换电池按钮
     /// </summary>
-    public static bool PryInput { get; private set; }
-    
-    /// <summary>
-    /// 按下开锁键
-    /// </summary>
-    public static bool PickPressed { get; private set; }
+    public static bool ReloadPressed { get; private set; }
 
     /// <summary>
     /// 按下任意键
@@ -67,8 +62,6 @@ public class InputHandler : SingletonMono<InputHandler>
         _playerInput = GetComponent<PlayerInput>();
         
         _playerMap = _playerInput.actions.FindActionMap("Player", true);
-        _cameraMap = _playerInput.actions.FindActionMap("SurveillanceCam", true);
-        _lockPickMap = _playerInput.actions.FindActionMap("Lock Pick", true);
     }
 
     protected override void Start()
@@ -79,18 +72,12 @@ public class InputHandler : SingletonMono<InputHandler>
         _playerMap.actionTriggered += OnMoveInput;
         _playerMap.actionTriggered += OnInteractInput;
         _playerMap.actionTriggered += OnSprintInput;
-        
-        // Camera
-        _cameraMap.actionTriggered += OnCamRotateInput;
-        _cameraMap.actionTriggered += OnExitInput;
-
-        // Lock Pick
-        _lockPickMap.actionTriggered += OnPryInput;
-        _lockPickMap.actionTriggered += OnPickInput;
+        _playerMap.actionTriggered += OnLightInput;
+        _playerMap.actionTriggered += OnReloadInput;
     }
 
-    #region Action Trigger Functions
-    
+    public static void UseLightInput() => LightPressed = false;
+
     // Player
     private void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -113,55 +100,17 @@ public class InputHandler : SingletonMono<InputHandler>
         
         InteractPressed = context.performed;
     }
-    
-    // Surveillance Camera
-    private void OnCamRotateInput(InputAction.CallbackContext context)
+
+    private void OnLightInput(InputAction.CallbackContext context)
     {
-        if (context.action.name != "Rotate") return;
-        NormInputX = Mathf.RoundToInt(context.ReadValue<float>());
-        Debug.Log(NormInputX);
-    }
-
-    private void OnExitInput(InputAction.CallbackContext context)
-    {
-        if (context.action.name != "Exit") return;
-
-        ExitPressed = context.performed;
-    }
-
-    // Lock Pick
-    private void OnPryInput(InputAction.CallbackContext context)
-    {
-        if (context.action.name != "Pry") return;
-
-        PryInput = context.performed;
-    }
-
-    private void OnPickInput(InputAction.CallbackContext context)
-    {
-        if (context.action.name != "Pick") return;
-
-        PickPressed = context.performed;
+        if (context.action.name != "Light") return;
+        LightPressed = context.performed;
     }
     
-    #endregion
-    
-    # region Map Switcher
-    
-    /// <summary>
-    /// 切换到玩家控制状态的输入
-    /// </summary>
-    public static void SwitchToPlayer() => _playerInput.SwitchCurrentActionMap("Player");
-    
-    /// <summary>
-    /// 切换到摄像头控制状态的输入
-    /// </summary>
-    public static void SwitchToCamera() => _playerInput.SwitchCurrentActionMap("SurveillanceCam");
-    
-    /// <summary>
-    /// 切换到开锁状态的输入
-    /// </summary>
-    public static void SwitchToLockPick() => _playerInput.SwitchCurrentActionMap("Lock Pick");
-    
-    #endregion
+    private void OnReloadInput(InputAction.CallbackContext context)
+    {
+        if (context.action.name != "Reload") return;
+        
+        ReloadPressed = context.performed;
+    }
 }

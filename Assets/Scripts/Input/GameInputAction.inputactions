@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "47d193fb-35b2-4ad7-8209-9b5dd8f4a0ef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "00d57f8a-c830-48b0-9a5a-e5ffe6bbfed1",
@@ -111,152 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "88477ac0-8b80-4edf-859e-a4299b3e6e32",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "216bcdaa-e064-412a-8553-177be4df0bf8",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1e21c6c4-4e4f-456b-8b37-537bc61db3fa",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Light",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "SurveillanceCam",
-            "id": "f6106f56-1b56-4a02-8935-6f76251397b2",
-            "actions": [
-                {
-                    "name": "Rotate",
-                    "type": "Value",
-                    "id": "fadec54a-a006-4ef7-adbf-647c346521a6",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Exit",
-                    "type": "Button",
-                    "id": "95d01907-5aa0-49a2-a835-71a997433fd5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "AD",
-                    "id": "c0404470-630a-4440-9d60-b1a67af3073b",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "6812835e-4e7b-4ae4-9b5f-b324013b27cf",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "674900fd-bd3b-4abb-9809-d8e69f9f2e17",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "ed9abd36-9dab-478f-a8a3-e831e7a9dd88",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Exit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Lock Pick",
-            "id": "46adfba6-28e4-4d19-9e19-92484f70654d",
-            "actions": [
-                {
-                    "name": "Pry",
-                    "type": "Button",
-                    "id": "fbaeaf58-9f2a-4e73-aa8f-3071cf221415",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Pick",
-                    "type": "Button",
-                    "id": "c3eafa71-33b1-475b-80d8-a8d2d62678e4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "1e8f427b-324f-46b8-92c8-26916010539a",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0892ed47-ba34-4dd5-9a92-04c13523eacc",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

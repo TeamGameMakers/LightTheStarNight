@@ -1,16 +1,20 @@
 using System.Collections.Generic;
-using Base.FSM;
+using Base;
+using Characters.Monsters;
 using Core;
 using Data;
-using Utilities;
 using UnityEngine;
+using Utilities;
 
-namespace Characters.Monsters
+namespace Characters
 {
     public class Monster: Entity
     {
         [SerializeField] private MonsterDataSO _data;
         private Animator _anim;
+        private Collider2D _coll;
+        
+        public static readonly Dictionary<int, Monster> Monsters;
         
         internal MonsterStateMachine StateMachine { get; private set; }
         internal GameCore Core { get; private set; }
@@ -27,12 +31,18 @@ namespace Characters.Monsters
         public bool Patrol { get; private set; }
         public bool Hit { get; private set; }
         public bool HitByPlayer { get; private set; }
-        public int Damage { get; private set; }
 
+        static Monster()
+        {
+            Monsters = new Dictionary<int, Monster>();
+        }
+        
         private void Awake()
         {
             Core = GetComponentInChildren<GameCore>();
             _anim = GetComponent<Animator>();
+            _coll = GetComponent<Collider2D>();
+            Monsters.Add(_coll.GetInstanceID(), this);
             
             StateMachine = new MonsterStateMachine();
             IdleState = new MonsterIdleState(this);
@@ -65,6 +75,12 @@ namespace Characters.Monsters
         private void Update()
         {
             StateMachine.CurrentState.LogicUpdate();
+            MonsterExitFlashLight();
+        }
+
+        private void OnDestroy()
+        {
+            Monsters.Remove(_coll.GetInstanceID());
         }
 
         internal void SetAnimBool(int hash, bool value)
@@ -88,18 +104,32 @@ namespace Characters.Monsters
         /// <summary>
         /// 怪进入光
         /// </summary>
-        public void MonsterEnterLight(int damage, bool hitByPlayer = false)
+        public void MonsterEnterLight(float damage, bool hitByPlayer = false)
         {
             Hit = true;
-            Damage = damage;
+            _data.healthPoint -= damage * Time.deltaTime;
             HitByPlayer = hitByPlayer;
         }
 
         /// <summary>
         /// 怪离开光
         /// </summary>
-        public void MonsterExitLight() => Hit = false;
+        private void MonsterExitFlashLight()
+        {
+            if (EventCenter.Instance.EventTrigger<Collider2D, bool>("LightOnMonster", _coll)) return;
+            Hit = false;
+            HitByPlayer = false;
+        }
         
+        /// <summary>
+        /// 怪离开路灯
+        /// </summary>
+        private void MonsterExitRoadLight()
+        {
+            Hit = false;
+            HitByPlayer = false;
+        }
+
         public void MonsterDie()
         {
             _data.isDead = true;

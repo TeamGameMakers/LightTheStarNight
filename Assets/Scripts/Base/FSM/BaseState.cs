@@ -1,4 +1,4 @@
-namespace Base.FSM
+namespace Base
 {
     public class BaseState
     {

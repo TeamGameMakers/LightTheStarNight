@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using Base.FSM;
-using Data;
+using Base;
 using Core;
+using Data;
 using UnityEngine;
 
-namespace Characters.Monsters
+namespace Characters
 {
     public class MonsterState : BaseState
     {
