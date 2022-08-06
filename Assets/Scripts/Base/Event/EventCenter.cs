@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace Base.Event
+namespace Base
 {
     /// <summary>
     /// 事件中心。
     /// </summary>
     public class EventCenter : Singleton<EventCenter>
     {
-        protected readonly Dictionary<string, IEventAction> eventContainer = new Dictionary<string, IEventAction>();
+        protected readonly Dictionary<string, IEvent> eventContainer = new Dictionary<string, IEvent>();
 
         /// <summary>
         /// 添加无参无返回值事件监听。
@@ -41,6 +41,14 @@ namespace Base.Event
             }
         }
 
+        public void AddEventListener<T1, T2>(string name, Func<T1, T2> callback)
+        {
+            if (eventContainer.ContainsKey(name))
+                (eventContainer[name] as EventFunc<T1, T2>).funcs += callback;
+            else
+                eventContainer.Add(name, new EventFunc<T1, T2>(callback));
+        }
+
         /// <summary>
         /// 移除事件监听。
         /// </summary>
@@ -64,6 +72,12 @@ namespace Base.Event
             if (eventContainer.ContainsKey(name)) {
                 (eventContainer[name] as EventAction<T>).actions -= callback;
             }
+        }
+
+        public void RemoveEventListener<T1, T2>(string name, Func<T1, T2> callback)
+        {
+            if (eventContainer.ContainsKey(name))
+                (eventContainer[name] as EventFunc<T1, T2>).funcs -= callback;
         }
 
         /// <summary>
@@ -90,6 +104,14 @@ namespace Base.Event
             }
         }
 
+        public T2 EventTrigger<T1, T2>(string name, T1 value)
+        {
+            if (eventContainer.ContainsKey(name))
+                return (eventContainer[name] as EventFunc<T1, T2>).funcs.Invoke(value);
+            
+            return default(T2);
+        }
+
         /// <summary>
         /// 清空事件中心。
         /// 主要在场景切换时。
@@ -102,10 +124,15 @@ namespace Base.Event
 
 
         #region 内部类
+        
+        protected interface IEvent {}
+
         /// <summary>
         /// 用于给字典装载不同 Action 的识别接口。
         /// </summary>
-        protected interface IEventAction { }
+        protected interface IEventAction: IEvent { }
+        
+        protected interface IEventFunc: IEvent { }
 
         /// <summary>
         /// 无参无返回值委托。
@@ -143,6 +170,16 @@ namespace Base.Event
                 return ea.actions;
             }
         }
+
+        protected class EventFunc<T1, T2> : IEventFunc
+        {
+            public Func<T1, T2> funcs;
+
+            public EventFunc(Func<T1, T2> func) => funcs += func;
+
+            public static implicit operator Func<T1, T2>(EventFunc<T1, T2> ea) => ea.funcs;
+        }
+        
         #endregion
     }
 }

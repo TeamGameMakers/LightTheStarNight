@@ -13,7 +13,7 @@ namespace Data
         public float walkSpeed;
         public float chaseSpeed;
         public float hitSpeed;
-        public int healthPoint;
+        public float healthPoint;
 
         [Header("Detection")] 
         public float checkRadius;

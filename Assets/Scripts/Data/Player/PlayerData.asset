@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4145cda34d415944ae16fe148b5d6cc, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  walkVelocity: 5
-  runVelocity: 8
-  healthPoint: 0
-  hasFlashLight: 0
-  batteryNum: 0
+  speed: 3
+  hasFlashLight: 1
+  lightRadius: 3
+  lightAngle: 100
+  lightDamage: 1
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxPower: 30
+  powerUsingSpeed: 1
+  powerRemaining: 30

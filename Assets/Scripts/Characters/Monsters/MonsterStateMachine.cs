@@ -1,7 +1,6 @@
-using Base.FSM;
-using UnityEngine;
+using Base;
 
-namespace Characters.Monsters
+namespace Characters
 {
     public class MonsterStateMachine : BaseStateMachine
     {

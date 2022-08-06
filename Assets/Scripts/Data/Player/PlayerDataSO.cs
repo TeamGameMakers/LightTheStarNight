@@ -5,11 +5,16 @@ namespace Data
     [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/Player")]
     public class PlayerDataSO : ScriptableObject
     {
-        public float walkVelocity;
-        public float runVelocity;
-        public int healthPoint;
-
+        public float speed;
+        [Space]
         public bool hasFlashLight;
-        public int batteryNum;
+        public float lightRadius;
+        public float lightAngle;
+        public float lightDamage;
+        public LayerMask layer;
+        [Space]
+        public float maxPower;
+        public float powerUsingSpeed;
+        public float powerRemaining;
     }
 }
