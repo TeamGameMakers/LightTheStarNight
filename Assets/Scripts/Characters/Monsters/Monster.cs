@@ -116,7 +116,7 @@ namespace Characters
         /// </summary>
         private void MonsterExitFlashLight()
         {
-            if (EventCenter.Instance.EventTrigger<Collider2D, bool>("LightOnMonster", _coll)) return;
+            if (EventCenter.Instance.FuncTrigger<Collider2D, bool>("LightOnMonster", _coll)) return;
             Hit = false;
             HitByPlayer = false;
         }
