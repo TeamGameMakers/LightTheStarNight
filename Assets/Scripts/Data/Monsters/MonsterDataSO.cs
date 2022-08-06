@@ -5,7 +5,6 @@ namespace Data
     [CreateAssetMenu(fileName = "MonsterData", menuName = "Data/Monster")]
     public class MonsterDataSO: ScriptableObject
     {
-        public MonsterType monsterType;
         public bool isDead;
         public float fadeSpeed;
 
@@ -22,12 +21,5 @@ namespace Data
         
         [Header("Patrol")]
         public float _patrolStopTime;
-        
-        public enum MonsterType
-        {
-            Normal,
-            Elite,
-            Boss
-        };
     }
 }
