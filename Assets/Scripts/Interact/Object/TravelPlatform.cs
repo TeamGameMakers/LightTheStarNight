@@ -16,7 +16,6 @@ namespace Interact
                 if (player == null)
                     player = other.gameObject.GetComponent<Player>();
                 
-                // TODO: 等待 Player 修改为能跟随移动后，匹配速度
                 // 提供环境速度
                 Vector2 envVelocity = direction * speed;
                 if (movable && moving)
