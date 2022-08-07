@@ -5,6 +5,7 @@ namespace Data
     [CreateAssetMenu(fileName = "MonsterData", menuName = "Data/Monster")]
     public class MonsterDataSO: ScriptableObject
     {
+        public bool isGood;
         public bool isDead;
         public float fadeSpeed;
 

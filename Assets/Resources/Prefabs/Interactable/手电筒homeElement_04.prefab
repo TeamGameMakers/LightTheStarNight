@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8448676892011407167}
   - component: {fileID: 8448676892011407166}
   - component: {fileID: 8448676892011407165}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: "\u624B\u7535\u7B52homeElement_04"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,6 +128,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tip
       objectReference: {fileID: 0}
+    - target: {fileID: 5847301011352630584, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847301011352630589, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -4522919573520900187, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
+    - target: {fileID: 5847301011352630590, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
+    - target: {fileID: 5847301011352630590, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4522919573520900187, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
     - target: {fileID: 5847301011352630591, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

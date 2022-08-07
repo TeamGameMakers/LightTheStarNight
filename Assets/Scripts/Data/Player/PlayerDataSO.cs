@@ -12,7 +12,9 @@ namespace Data
         public float lightRadius;
         public float lightAngle;
         public float lightDamage;
-        public LayerMask layer;
+        public float transformTime;
+        public LayerMask monsterLayer;
+        public LayerMask starLightLayer;
         
         [Header("Battery Light")]
         public float maxPower;
