@@ -12,15 +12,26 @@ namespace Interact
         {
             if (other.CompareTag("Player"))
             {
-                Debug.Log("接触 Player");
+                Debug.Log("Player 在移动平台上");
                 if (player == null)
                     player = other.gameObject.GetComponent<Player>();
                 
-                // TODO: 有待优化
+                // TODO: 等待 Player 修改为能跟随移动后，匹配速度
                 // 提供环境速度
                 Vector2 envVelocity = direction * speed;
                 if (movable && moving)
-                    player.environmentVelocity += envVelocity;
+                    player.environmentVelocity = envVelocity;
+                else
+                    player.environmentVelocity = Vector2.zero;
+            }
+        }
+
+        protected virtual void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                Debug.Log("Player 离开移动平台");
+                player.environmentVelocity = Vector2.zero;
             }
         }
     }

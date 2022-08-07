@@ -88,7 +88,7 @@ namespace Interact
         // 移动物体
         protected virtual void MoveObject()
         {
-            transform.position += direction * speed * Time.deltaTime;
+            transform.position += direction * speed * Time.fixedDeltaTime;
         }
 
         // 抵达终点后的行为
