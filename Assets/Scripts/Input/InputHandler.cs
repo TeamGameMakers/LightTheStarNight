@@ -42,6 +42,7 @@ public class InputHandler : SingletonMono<InputHandler>
     /// 按下吸收按钮
     /// </summary>
     public static bool AbsorbPressed { get; private set; }
+    
 
     /// <summary>
     /// 按下任意键

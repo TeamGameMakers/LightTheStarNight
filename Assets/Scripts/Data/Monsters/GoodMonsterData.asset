@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6ee522a1c864a12a86575cd8d36e308, type: 3}
-  m_Name: TestMonsterData
+  m_Name: GoodMonsterData
   m_EditorClassIdentifier: 
+  isGood: 1
   isDead: 0
   fadeSpeed: 0.5
   walkSpeed: 1
@@ -22,7 +23,7 @@ MonoBehaviour:
   checkAngle: 35
   checkLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   _patrolStopTime: 2
   explosionDistance: 1
   filter:
@@ -34,7 +35,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 192
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
