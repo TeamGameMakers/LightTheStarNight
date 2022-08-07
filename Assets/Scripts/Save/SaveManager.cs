@@ -8,7 +8,7 @@ namespace Save
     {
         #region 存储数据
 
-        private static Dictionary<string, bool> m_boolDic = new Dictionary<string, bool>();
+        private static HashSet<string> m_boolSet = new HashSet<string>();
         private static Dictionary<string, int> m_intDic = new Dictionary<string, int>();
 
         public static void Register(string key)
@@ -18,8 +18,9 @@ namespace Save
                 Debug.LogWarning("不可为空键");
                 return;
             }
-
-            m_boolDic[key] = true;
+            
+            if (!m_boolSet.Contains(key))
+                m_boolSet.Add(key);
         }
 
         public static void Register(string key, int value)
@@ -39,7 +40,7 @@ namespace Save
 
         public static bool GetBool(string key)
         {
-            if (m_boolDic.ContainsKey(key))
+            if (m_boolSet.Contains(key))
                 return true;
             return false;
         }
