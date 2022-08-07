@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5056466443508748447}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5056466443508748441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 3452d8372a67c6d46af12a2ba4175b7b, type: 2}
   playerWithFlashLight: {fileID: 22100000, guid: 2f6e610b87f36d54d8b59a61aeff128c, type: 2}
+  environmentVelocity: {x: 0, y: 0}
 --- !u!114 &5056466443508748422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +336,7 @@ MonoBehaviour:
   _radius: 0.6
   _interactableMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &5056466443508748447
 MonoBehaviour:
   m_ObjectHideFlags: 0
