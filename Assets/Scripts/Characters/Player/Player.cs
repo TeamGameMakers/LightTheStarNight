@@ -19,7 +19,6 @@ namespace Characters
         
         public PlayerDataSO data;
         public RuntimeAnimatorController playerWithFlashLight;
-
         public Vector2 environmentVelocity = Vector2.zero;
 
         #region States

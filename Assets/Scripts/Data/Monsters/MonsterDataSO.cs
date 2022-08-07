@@ -21,5 +21,8 @@ namespace Data
         
         [Header("Patrol")]
         public float _patrolStopTime;
+
+        [Header("Explosion")] 
+        public float explosionRadius;
     }
 }

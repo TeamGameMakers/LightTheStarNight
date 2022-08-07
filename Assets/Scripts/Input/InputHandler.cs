@@ -27,12 +27,7 @@ public class InputHandler : SingletonMono<InputHandler>
     /// y轴标准化的输入值
     /// </summary>
     public static int NormInputY { get; private set; }
-    
-    /// <summary>
-    /// 按下冲刺键
-    /// </summary>
-    public static bool SprintPressed { get; private set; }
-    
+
     /// <summary>
     /// 按下交互键
     /// </summary>
@@ -44,9 +39,9 @@ public class InputHandler : SingletonMono<InputHandler>
     public static bool LightPressed { get; private set; }
     
     /// <summary>
-    /// 按下换电池按钮
+    /// 按下吸收按钮
     /// </summary>
-    public static bool ReloadPressed { get; private set; }
+    public static bool AbsorbPressed { get; private set; }
 
     /// <summary>
     /// 按下任意键
@@ -71,9 +66,8 @@ public class InputHandler : SingletonMono<InputHandler>
         // Player
         _playerMap.actionTriggered += OnMoveInput;
         _playerMap.actionTriggered += OnInteractInput;
-        _playerMap.actionTriggered += OnSprintInput;
         _playerMap.actionTriggered += OnLightInput;
-        _playerMap.actionTriggered += OnReloadInput;
+        _playerMap.actionTriggered += OnAbsorbInput;
     }
 
     public static void UseLightInput() => LightPressed = false;
@@ -87,13 +81,6 @@ public class InputHandler : SingletonMono<InputHandler>
         NormInputY = Mathf.RoundToInt(RawMoveInput.y);
     }
 
-    private void OnSprintInput(InputAction.CallbackContext context)
-    {
-        if (context.action.name != "Sprint") return;
-
-        SprintPressed = context.performed;
-    }
-    
     private void OnInteractInput(InputAction.CallbackContext context)
     {
         if (context.action.name != "Interact") return;
@@ -107,10 +94,12 @@ public class InputHandler : SingletonMono<InputHandler>
         LightPressed = context.performed;
     }
     
-    private void OnReloadInput(InputAction.CallbackContext context)
+    private void OnAbsorbInput(InputAction.CallbackContext context)
     {
-        if (context.action.name != "Reload") return;
+        if (context.action.name != "Absorb") return;
         
-        ReloadPressed = context.performed;
+        AbsorbPressed = context.performed;
+        
+        if (AbsorbPressed) Debug.Log("111111");
     }
 }
