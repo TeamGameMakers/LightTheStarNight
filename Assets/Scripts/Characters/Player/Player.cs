@@ -15,8 +15,9 @@ namespace Characters
         
         private Light2D _flashLight;
         private SpriteRenderer _sprite;
+        private AudioSource _audio;
         private List<Collider2D> _monstersColl;
-        
+
         public PlayerDataSO data;
         public RuntimeAnimatorController playerWithFlashLight;
         public Vector2 environmentVelocity = Vector2.zero;
@@ -32,6 +33,7 @@ namespace Characters
         {
             Anim = GetComponent<Animator>();
             Core = GetComponentInChildren<GameCore>();
+            _audio = GetComponent<AudioSource>();
             _flashLight = transform.GetChild(2).GetComponent<Light2D>();
             _sprite = GetComponent<SpriteRenderer>();
 
@@ -87,11 +89,17 @@ namespace Characters
             if (InputHandler.LightPressed && data.hasFlashLight)
             {
                 InputHandler.UseLightInput();
-                
+
                 if (data.powerRemaining > 0 && !_flashLight.enabled)
+                {
                     _flashLight.enabled = true;
+                    PlayerAudioClip(data.flashLightOn);
+                }
                 else
+                {
                     _flashLight.enabled = false;
+                    PlayerAudioClip(data.flashLightOff);
+                }
             }
             else if (_flashLight.enabled && data.powerRemaining <= 0)
                 _flashLight.enabled = false;
@@ -110,5 +118,11 @@ namespace Characters
         }
         
         private bool LightOnMonster(Collider2D coll) => _monstersColl.Contains(coll);
+
+        public void PlayerAudioClip(AudioClip clip)
+        {
+            _audio.clip = clip;
+            _audio.Play();
+        }
     }
 }

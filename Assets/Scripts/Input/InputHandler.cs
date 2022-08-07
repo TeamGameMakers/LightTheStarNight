@@ -107,7 +107,5 @@ public class InputHandler : SingletonMono<InputHandler>
         if (context.action.name != "Absorb") return;
         
         AbsorbPressed = context.performed;
-        
-        if (AbsorbPressed) Debug.Log("111111");
     }
 }

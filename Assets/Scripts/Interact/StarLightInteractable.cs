@@ -23,6 +23,7 @@ namespace Interact
                 // 获取星光
 
                 player.data.powerRemaining = player.data.maxPower;
+                player.PlayerAudioClip(player.data.absorbPower);
 
                 var curTransform = transform;
                 var parent = curTransform.parent;
