@@ -1,12 +1,14 @@
 ﻿using Characters;
 using Save;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Interact
 {
     public class StarLightInteractable : Interactable
     {
         public RambleObject rambleObject;
+        public bool isAbsorbing;
         
         protected override void Start()
         {
@@ -17,8 +19,18 @@ namespace Interact
             }
         }
 
+        protected override void Update()
+        {
+            base.Update();
+            
+            if (isAbsorbing && !InputHandler.InteractPressed)
+                isAbsorbing = false;
+        }
+
         public override void Interact(Interactor interactor)
         {
+            isAbsorbing = true;
+            
             // 开启颤动
             if (rambleObject != null)
             {
