@@ -11,9 +11,6 @@ namespace Characters
         protected readonly GameCore _core;
         protected readonly MonsterDataSO _data;
         private readonly int _animBoolHash;
-        private readonly int _animIdleHash = Animator.StringToHash("idle");
-        private readonly int _animWalkHash = Animator.StringToHash("walk");
-        private readonly int _animChaseHash = Animator.StringToHash("chase");
 
         protected MonsterState(Monster monster, string name = null) : base(monster.StateMachine)
         {
