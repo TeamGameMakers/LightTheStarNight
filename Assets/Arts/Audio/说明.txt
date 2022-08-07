@@ -1,0 +1,8 @@
+Flashlightoff关闭手电
+Flashlighton打开手电
+Reachstar吸收星光
+Stardeath死亡
+Starfall陨石坠落
+starlight123星光放入星灯123
+starlightACT完全激活星灯
+UI1234就是UI
