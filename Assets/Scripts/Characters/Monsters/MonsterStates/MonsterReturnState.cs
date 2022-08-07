@@ -1,8 +1,9 @@
-﻿using Utilities;
+﻿using UnityEngine;
+using Utilities;
 
 namespace Characters
 {
-    public class MonsterReturnState: MonsterState
+    public class MonsterReturnState: MonsterMoveState
     {
         public MonsterReturnState(Monster monster, string name = null) : base(monster, name) { }
 
@@ -19,7 +20,7 @@ namespace Characters
         {
             base.LogicUpdate();
             
-            if (Utils.IsArriveAtDestination(_monster.transform, _monster.SpawnTransform, 0.01f))
+            if (Utils.IsArriveAtDestination(_monster.transform, _monster.SpawnTransform, 0.1f))
                 StateMachine.ChangeState(_monster.IdleState);
         }
 

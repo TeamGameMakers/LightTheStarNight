@@ -12,15 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ee522a1c864a12a86575cd8d36e308, type: 3}
   m_Name: TestMonsterData
   m_EditorClassIdentifier: 
-  isDead: 0
+  isDead: 1
   fadeSpeed: 0.5
   walkSpeed: 1
   chaseSpeed: 2
   hitSpeed: 0.5
-  healthPoint: 5
+  healthPoint: 29.912308
   checkRadius: 4
   checkAngle: 35
   checkLayer:
     serializedVersion: 2
     m_Bits: 64
   _patrolStopTime: 2
+  explosionDistance: 1
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 64
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0

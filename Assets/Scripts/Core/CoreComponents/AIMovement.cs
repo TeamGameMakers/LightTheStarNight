@@ -6,7 +6,6 @@ namespace Core
 {
     public class AIMovement: CoreComponent
     {
-        private Rigidbody2D _rb;
         private IAstarAI _ai;
 
         private Vector2 _currentVelocity;
@@ -19,7 +18,6 @@ namespace Core
 
         private void Awake()
         {
-            _rb = GetComponentInParent<Rigidbody2D>();
             _ai = GetComponentInParent<IAstarAI>();
         }
 
@@ -35,7 +33,7 @@ namespace Core
 
         internal void LogicUpdate()
         {
-            _currentVelocity = _rb.velocity;
+            _currentVelocity = _ai.desiredVelocity;
         }
         
         private void OnDisable()

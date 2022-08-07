@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test-Ash.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: "Assets/Scenes/\u5F00\u59CB\u4E3B\u83DC\u5355/\u5F00\u59CB\u754C\u9762.unity"
+    guid: f8ec51544f72089458437151d289b957
+  - enabled: 1
+    path: Assets/Scenes/Test-AC.unity
+    guid: 036fc06c984e62b4385c44a5e0236830
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 00c190d41b281e443bb9d3c5042e6fbe, type: 2}

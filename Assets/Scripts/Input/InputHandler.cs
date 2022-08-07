@@ -50,6 +50,14 @@ public class InputHandler : SingletonMono<InputHandler>
 
     #endregion
 
+    #region SwitchMap
+
+    public static void SwitchToPlayer() => _playerInput.SwitchCurrentActionMap("Player");
+
+    public static void SwitchToUI() => _playerInput.SwitchCurrentActionMap("UI");
+
+    #endregion
+
     protected override void Awake()
     {
         base.Awake();
