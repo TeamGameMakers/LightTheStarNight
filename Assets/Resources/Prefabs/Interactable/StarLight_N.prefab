@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 1716446037636203241}
   - component: {fileID: 1716446037636203242}
   - component: {fileID: 1716446037636203240}
+  - component: {fileID: 1115397303}
   m_Layer: 11
   m_Name: StarLight_N
-  m_TagString: Untagged
+  m_TagString: StarLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +173,22 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 64
+  _canChange: 0
+--- !u!114 &1115397303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930912966444564561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba198d43de248f98961876aae0230c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 0.18, y: 0.18}
+  speed: 2
+  parkTime: 0
 --- !u!1 &5035325033528940383
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +313,7 @@ GameObject:
   - component: {fileID: 5035325034579938551}
   m_Layer: 10
   m_Name: Interactable
-  m_TagString: Untagged
+  m_TagString: StarLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: bc06e3e797c69194c8be743ba3e03364, type: 2}
   _checkPoint: {fileID: 5035325034579938553}
+  rambleObject: {fileID: 1115397303}
 --- !u!1001 &5035325033781703482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,6 +372,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5035325034579938553}
     m_Modifications:
+    - target: {fileID: 4398865612524324352, guid: 5952fa774b9e5f446806ab3a37908f17, type: 3}
+      propertyPath: m_text
+      value: "\u62FF\u5230\u624B\u7535\u7B52\u957F\u6309 [E] \u5438\u6536\u661F\u5149"
+      objectReference: {fileID: 0}
     - target: {fileID: 4398865612524324353, guid: 5952fa774b9e5f446806ab3a37908f17, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -384,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4398865612524324353, guid: 5952fa774b9e5f446806ab3a37908f17, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3.8854
+      value: 3.1968
       objectReference: {fileID: 0}
     - target: {fileID: 4398865612524324353, guid: 5952fa774b9e5f446806ab3a37908f17, type: 3}
       propertyPath: m_SizeDelta.y

@@ -34,7 +34,7 @@ namespace Interact
             });
             
             // 注册增加点亮灯塔的事件
-            EventCenter.Instance.AddEventListener(LightenFullEvent, () => ++m_brightenCount);
+            EventCenter.Instance.AddEventListener(LightenFullEvent, CountBrighten);
         }
 
         private void Update()
@@ -46,6 +46,11 @@ namespace Interact
                     obj.SetActive(true);
                 }
             }
+        }
+
+        private void CountBrighten()
+        {
+            ++m_brightenCount;
         }
     }
 }

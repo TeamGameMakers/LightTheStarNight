@@ -705,8 +705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 606, y: -338}
-  m_SizeDelta: {x: -1736.0264, y: -962.29}
+  m_AnchoredPosition: {x: 582.3198, y: -320.23978}
+  m_SizeDelta: {x: -1759.7065, y: -980.0502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &770787836
 CanvasRenderer:
@@ -728,8 +728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0724406e1dae2544fafa2454a18d399f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 5, y: 5}
-  speed: 2
+  size: {x: 15, y: 15}
+  speed: 4.5
   parkTime: 0.2
 --- !u!1 &805752133
 GameObject:
@@ -1171,8 +1171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0724406e1dae2544fafa2454a18d399f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 5, y: 5}
-  speed: 2
+  size: {x: 15, y: 15}
+  speed: 4.5
   parkTime: 0.2
 --- !u!1 &1511988102
 GameObject:
@@ -1605,8 +1605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0724406e1dae2544fafa2454a18d399f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 5, y: 5}
-  speed: 2
+  size: {x: 15, y: 15}
+  speed: 4.5
   parkTime: 0.2
 --- !u!1 &1704367421
 GameObject:
@@ -1856,8 +1856,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0724406e1dae2544fafa2454a18d399f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 5, y: 5}
-  speed: 2
+  size: {x: 15, y: 15}
+  speed: 4.5
   parkTime: 0.2
 --- !u!1 &1882680429
 GameObject:

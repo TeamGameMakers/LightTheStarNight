@@ -18,7 +18,7 @@ namespace UI
 
         protected virtual void OnEnable()
         {
-            GameManager.SwitchState(GameState.UI);
+            GameManager.SwitchState(GameState.UI, false);
         }
 
         protected override void OnClick(string btnName)
@@ -40,7 +40,7 @@ namespace UI
 
         protected virtual void OnDisable()
         {
-            GameManager.ResumeState();
+            GameManager.SwitchState(GameState.Playing);
         }
     }
 }

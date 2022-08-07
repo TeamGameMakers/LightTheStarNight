@@ -9,7 +9,7 @@ namespace UI
     {
         protected virtual void OnEnable()
         {
-            GameManager.SwitchState(GameState.UI);
+            GameManager.SwitchState(GameState.UI, false);
         }
 
         protected virtual void Update()
@@ -36,7 +36,7 @@ namespace UI
 
         protected virtual void OnDisable()
         {
-            GameManager.ResumeState();
+            GameManager.SwitchState(GameState.Playing);
         }
     }
 }

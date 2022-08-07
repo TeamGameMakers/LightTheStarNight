@@ -106,7 +106,7 @@ namespace Interact
                 // 改变自身显示状态
                 m_animator.SetTrigger(Brighten);
                 // 销毁
-                Destroy(col.gameObject);
+                Destroy(col.transform.parent.gameObject);
                 
                 // 完全亮起，触发点亮事件
                 if (m_lighten == needLighten)
