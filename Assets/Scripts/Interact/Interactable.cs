@@ -12,36 +12,40 @@ namespace Interact
         // 记录拾取的键
         public string PickSaveKey => "pick_item_" + GetInstanceID();
         
-        protected SpriteRenderer _spriteRenderer;
+        protected InteractableTip itrtTip;
         
         [SerializeField] protected InteractableDataSO _data;
         [SerializeField] private Transform _checkPoint;
 
         protected virtual void Awake()
         {
-            _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+            itrtTip = transform.GetChild(0).GetComponent<InteractableTip>();
         }
 
         protected virtual void Start()
         {
-            _spriteRenderer.enabled = false;
+            
         }
 
         protected virtual void Update()
         {
-            if (_spriteRenderer.enabled)
+            if (itrtTip.enabled && !itrtTip.FadeOutNow)
             {
                 var coll = Physics2D.
                     OverlapCircle(_checkPoint.position, _data.checkRadius, _data.checkLayer);
 
-                if (!coll) _spriteRenderer.enabled = false;
+                if (!coll) itrtTip.Hide();
             }
         }
 
         /// <summary>
         /// 可互动高亮提示
         /// </summary>
-        public virtual void ShowTip() => _spriteRenderer.enabled = true;
+        public virtual void ShowTip()
+        {
+            if (!itrtTip.FadeInNow)
+                itrtTip.Show();   
+        }
 
         /// <summary>
         /// 交互的抽象方法
