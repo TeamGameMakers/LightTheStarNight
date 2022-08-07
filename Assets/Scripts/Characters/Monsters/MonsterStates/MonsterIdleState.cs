@@ -33,12 +33,7 @@ namespace Characters
                 StateMachine.ChangeState(_monster.PatrolState);
            
             else if (!Utils.IsArriveAtDestination(_monster.transform, _monster.SpawnTransform, 0.01f))
-            {
-                _core.AIMovement.CurrentDestination = _monster.SpawnTransform;
-                _core.Detection.LookAtTarget(_monster.SpawnTransform);
-            }
-            else
-                _core.Detection.LookAtTarget(_monster.SpawnTransform.right);
+                StateMachine.ChangeState(_monster.ReturnState);
         }
 
         public override void Exit()

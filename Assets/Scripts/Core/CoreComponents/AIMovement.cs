@@ -14,6 +14,7 @@ namespace Core
         
         public Vector2 CurrentVelocity => _currentVelocity;
         public Vector2 CurrentVelocityNorm => _currentVelocity.normalized;
+        public float CurrentSpeed => _currentVelocity.magnitude;
         public Transform CurrentDestination { get => _currentDestination; set => _currentDestination = value; }
 
         private void Awake()
