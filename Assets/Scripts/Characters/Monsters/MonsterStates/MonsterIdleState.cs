@@ -32,7 +32,7 @@ namespace Characters
             else if (_canPatrol)
                 StateMachine.ChangeState(_monster.PatrolState);
            
-            else if (!Utils.IsArriveAtDestination(_monster.transform, _monster.SpawnTransform, 0.01f))
+            else if (!Utils.IsArriveAtDestination(_monster.transform, _monster.SpawnTransform, 0.1f))
                 StateMachine.ChangeState(_monster.ReturnState);
         }
 
