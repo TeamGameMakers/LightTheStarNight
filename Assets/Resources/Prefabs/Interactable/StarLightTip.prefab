@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4398865612524324355}
   - component: {fileID: 4398865612524324352}
   - component: {fileID: 4398865612524324366}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: StarLightTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398865612524324358}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7142593387730105476, guid: 1a7f86934f51c2d409f22d5bbea25977, type: 2}
+  - {fileID: -4522919573520900187, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,10 +101,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u661F\u5149\u80FD\u591F\u4EA4\u4E92"
+  m_text: "\u957F\u6309 [E] \u53EF\u5438\u6536\u661F\u5149"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a7f86934f51c2d409f22d5bbea25977, type: 2}
-  m_sharedMaterial: {fileID: -7142593387730105476, guid: 1a7f86934f51c2d409f22d5bbea25977, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
+  m_sharedMaterial: {fileID: -4522919573520900187, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

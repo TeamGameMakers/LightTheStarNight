@@ -19,13 +19,17 @@ namespace Interact
         {
             if (InputHandler.AbsorbPressed)
             {
-                Debug.Log("与星光交互");
                 Player player = interactor.gameObject.GetComponent<Player>();
-                // TODO: 获取星光
+                // 获取星光
+
+                player.data.powerRemaining = player.data.maxPower;
+
+                var curTransform = transform;
+                var parent = curTransform.parent;
+                curTransform.parent = null;
             
-                // 记录并销毁
-                SaveManager.Register(PickSaveKey);
-                Destroy(gameObject);
+                Destroy(parent.gameObject);
+                Destroy(curTransform.gameObject);
             }
         }
     }
