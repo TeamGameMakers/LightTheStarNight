@@ -13,7 +13,7 @@ namespace Save
 
         public static void Register(string key)
         {
-            if (!string.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 Debug.LogWarning("不可为空键");
                 return;
@@ -24,7 +24,7 @@ namespace Save
 
         public static void Register(string key, int value)
         {
-            if (!string.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 Debug.LogWarning("不可为空键");
                 return;

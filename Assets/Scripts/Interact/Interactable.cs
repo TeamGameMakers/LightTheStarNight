@@ -9,6 +9,9 @@ namespace Interact
     /// </summary>
     public abstract class Interactable: MonoBehaviour
     {
+        // 记录拾取的键
+        public string PickSaveKey => "pick_item_" + GetInstanceID();
+        
         protected SpriteRenderer _spriteRenderer;
         
         [SerializeField] protected InteractableDataSO _data;
