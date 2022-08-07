@@ -97,9 +97,16 @@ namespace Characters
                 _flashLight.enabled = false;
 
             if (_flashLight.enabled)
+            {
                 data.powerRemaining -= data.powerUsingSpeed * Time.deltaTime;
+                data.powerRemaining = Mathf.Clamp(data.powerRemaining, 0, data.maxPower);
+            }
 
             _sprite.sortingLayerName = Anim.GetFloat(MoveState.animHashFloatY) > 0 ? "PlayerUnLit" : "PlayerLit";
+            
+            // UI更新
+            var powerUsed = Mathf.FloorToInt((data.maxPower - data.powerRemaining) / data.maxPower * 4);
+            if (powerUsed >= 0) EventCenter.Instance.EventTrigger("UpdateBatteryUI", powerUsed);
         }
         
         private bool LightOnMonster(Collider2D coll) => _monstersColl.Contains(coll);
