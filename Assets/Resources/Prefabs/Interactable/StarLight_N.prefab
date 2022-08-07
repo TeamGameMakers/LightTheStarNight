@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1716446037636203242}
   - component: {fileID: 1716446037636203240}
   m_Layer: 11
-  m_Name: StarLight
+  m_Name: StarLight_N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4930912966444564561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.22, y: 1.29, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -172,7 +172,6 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 64
-  _canChange: 0
 --- !u!1 &5035325033528940383
 GameObject:
   m_ObjectHideFlags: 0

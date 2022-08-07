@@ -41,7 +41,7 @@ namespace Base
             }
         }
 
-        public void AddFuncListener<T>(string name, Func<T> callback)
+        public void AddEventListener<T>(string name, Func<T> callback)
         {
             if (eventContainer.ContainsKey(name))
                 (eventContainer[name] as EventFunc<T>).funcs += callback;
@@ -49,7 +49,7 @@ namespace Base
                 eventContainer.Add(name, new EventFunc<T>(callback));
         }
 
-        public void AddFuncListener<T1, T2>(string name, Func<T1, T2> callback)
+        public void AddEventListener<T1, T2>(string name, Func<T1, T2> callback)
         {
             if (eventContainer.ContainsKey(name))
                 (eventContainer[name] as EventFunc<T1, T2>).funcs += callback;
@@ -82,12 +82,6 @@ namespace Base
             }
         }
 
-        public void RemoveFuncListener<T>(string name, Func<T> callback)
-        {
-            if (eventContainer.ContainsKey(name))
-                (eventContainer[name] as EventFunc<T>).funcs -= callback;
-        }
-
         public void RemoveEventListener<T1, T2>(string name, Func<T1, T2> callback)
         {
             if (eventContainer.ContainsKey(name))
@@ -118,7 +112,7 @@ namespace Base
             }
         }
 
-        public T FuncTrigger<T>(string name)
+        public T EventTrigger<T>(string name)
         {
             if (eventContainer.ContainsKey(name))
                 return (eventContainer[name] as EventFunc<T>).funcs.Invoke();
@@ -126,7 +120,7 @@ namespace Base
             return default(T);
         }
 
-        public T2 FuncTrigger<T1, T2>(string name, T1 value)
+        public T2 EventTrigger<T1, T2>(string name, T1 value)
         {
             if (eventContainer.ContainsKey(name))
                 return (eventContainer[name] as EventFunc<T1, T2>).funcs.Invoke(value);
