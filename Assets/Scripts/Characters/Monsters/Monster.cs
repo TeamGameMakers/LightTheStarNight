@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Base;
+using Base.Resource;
 using Core;
 using Data;
 using UnityEngine;
@@ -140,8 +141,19 @@ namespace Characters
 
         public void MonsterDie()
         {
+            var curTransform = transform;
+            
             _data.isDead = true;
-            Destroy(Patrol ? transform.parent.gameObject : transform.gameObject);
+            
+            // 生成星光
+            var go = ResourceLoader.Load<GameObject>("Prefabs/Interactable/StarLight");
+            go.transform.position = transform.position;
+
+            var parent = curTransform.parent;
+            curTransform.parent = null;
+            
+            Destroy(parent.gameObject);
+            Destroy(curTransform.gameObject);
         }
 
 #if UNITY_EDITOR
