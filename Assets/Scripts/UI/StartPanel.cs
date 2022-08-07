@@ -26,8 +26,7 @@ namespace UI
                     audioSource.Play();
                     // 切换到游戏场景
                     fader.Fade(1, f => {
-                        // TODO: 修改场景名
-                        SceneLoader.LoadScene("Test-AC");
+                        SceneLoader.LoadScene("GameScene");
                     });
                     break;
                 case "QuitBtn":

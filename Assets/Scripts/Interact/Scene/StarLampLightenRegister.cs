@@ -1,8 +1,5 @@
-﻿using System;
-using Base;
-using Base.Event;
+﻿using Base.Event;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
 namespace Interact.Scene
@@ -33,14 +30,11 @@ namespace Interact.Scene
             globalLight.intensity = originalIntensity;
             intensityPerRank = (maxIntensity - originalIntensity) / maxRank;
             speed = intensityPerRank / duration;
+            curIntensity = originalIntensity;
         }
 
         private void Update()
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                EventCenter.Instance.EventTrigger(registerName);
-            }
             // 逐渐变亮
             if (brightening)
             {
