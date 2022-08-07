@@ -6,15 +6,22 @@ namespace Data
     public class PlayerDataSO : ScriptableObject
     {
         public float speed;
-        [Space]
+        
+        [Header("Flash Light")]
         public bool hasFlashLight;
         public float lightRadius;
         public float lightAngle;
         public float lightDamage;
         public LayerMask layer;
-        [Space]
+        
+        [Header("Battery Light")]
         public float maxPower;
         public float powerUsingSpeed;
         public float powerRemaining;
+
+        [Header("Sound")] 
+        public AudioClip flashLightOn;
+        public AudioClip flashLightOff;
+        public AudioClip absorbPower;
     }
 }

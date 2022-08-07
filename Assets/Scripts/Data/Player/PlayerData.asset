@@ -23,3 +23,6 @@ MonoBehaviour:
   maxPower: 30
   powerUsingSpeed: 1
   powerRemaining: 27.015429
+  flashLightOn: {fileID: 8300000, guid: c4beaeec9f2c8394c85afb9b12683982, type: 3}
+  flashLightOff: {fileID: 8300000, guid: 6419201899bfe494ebac0a6049dde8b8, type: 3}
+  absorbPower: {fileID: 8300000, guid: e5f0fdee1212b99419e609de3f951dfc, type: 3}
