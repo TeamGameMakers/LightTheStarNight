@@ -24,6 +24,6 @@ namespace Data
 
         [Header("Explosion")] 
         public float explosionDistance;
-        public float explosionRadius;
+        public ContactFilter2D filter;
     }
 }

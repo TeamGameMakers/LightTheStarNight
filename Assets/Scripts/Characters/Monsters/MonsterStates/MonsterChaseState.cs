@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Characters
 {
-    public class MonsterChaseState: MonsterState
+    public class MonsterChaseState: MonsterMoveState
     {
         private Transform _target;
         
@@ -38,6 +38,8 @@ namespace Characters
 
         public override void Exit()
         {
+            base.Exit();
+            
             _core.AIMovement.SetSpeed(_data.chaseSpeed);
         }
     }

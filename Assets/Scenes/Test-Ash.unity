@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 5ddb7fc93dbe6ad4e8b1299129cc4f57, type: 2}
+  explosionCollider: {fileID: 295573912}
 --- !u!212 &116963764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -366,7 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 295573911}
   - component: {fileID: 295573912}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +396,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295573910}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

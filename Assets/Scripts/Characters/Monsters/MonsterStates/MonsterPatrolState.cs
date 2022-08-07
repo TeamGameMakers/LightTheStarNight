@@ -1,6 +1,6 @@
 namespace Characters
 {
-    public class MonsterPatrolState: MonsterState
+    public class MonsterPatrolState: MonsterMoveState
     {
         private int _maxPointNum;
         private int _pointIndex;

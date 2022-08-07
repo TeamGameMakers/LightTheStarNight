@@ -32,10 +32,16 @@ namespace Characters
         
         #endregion
         
+        // 巡逻
         public List<Transform> PatrolPoints { get; private set; }
         public bool Patrol { get; private set; }
+        
+        // 受伤判定
         public bool Hit { get; private set; }
         public bool HitByPlayer { get; private set; }
+        
+        // 爆炸
+        public Collider2D explosionCollider;
 
         static Monster()
         {
@@ -47,14 +53,15 @@ namespace Characters
             Core = GetComponentInChildren<GameCore>();
             _anim = GetComponent<Animator>();
             _coll = GetComponent<Collider2D>();
+            explosionCollider = GetComponentInChildren<CircleCollider2D>();
             Monsters.Add(_coll.GetInstanceID(), this);
             
             StateMachine = new MonsterStateMachine();
             IdleState = new MonsterIdleState(this, "idle");
-            ReturnState = new MonsterReturnState(this, "return");
+            ReturnState = new MonsterReturnState(this, "walk");
             ChaseState = new MonsterChaseState(this, "chase");
             ExplosionState = new MonsterExplosionState(this, "explode");
-            PatrolState = new MonsterPatrolState(this, "patrol");
+            PatrolState = new MonsterPatrolState(this, "walk");
             DieState = new MonsterDieState(this);
         }
 
@@ -81,6 +88,7 @@ namespace Characters
 
         private void Update()
         {
+            Core.LogicUpdate();
             StateMachine.CurrentState.LogicUpdate();
             MonsterExitFlashLight();
         }
@@ -90,10 +98,9 @@ namespace Characters
             Monsters.Remove(_coll.GetInstanceID());
         }
 
-        internal void SetAnimBool(int hash, bool value)
-        {
-            _anim.SetBool(hash, value);
-        }
+        internal void SetAnimBool(int hash, bool value) => _anim.SetBool(hash, value);
+
+        internal void SetAnimFloat(int hash, float value) => _anim.SetFloat(hash, value);
 
         private bool CheckPatrol()
         {
@@ -127,15 +134,9 @@ namespace Characters
             Hit = false;
             HitByPlayer = false;
         }
+
+        public void Explode() => ExplosionState.Explode();
         
-        /// <summary>
-        /// 怪离开路灯
-        /// </summary>
-        private void MonsterExitRoadLight()
-        {
-            Hit = false;
-            HitByPlayer = false;
-        }
 
         public void MonsterDie()
         {
