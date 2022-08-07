@@ -14,9 +14,9 @@ TagManager:
   - Player
   - Monster
   - NPC
+  - Trigger
   - Interactable
-  - 
-  - 
+  - Pushable
   - 
   - 
   - 
@@ -41,9 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: CoverByPlayer
+    uniqueID: 2535081839
+    locked: 0
   - name: PlayerLit
     uniqueID: 2060581365
     locked: 0
   - name: PlayerUnLit
     uniqueID: 548368933
+    locked: 0
+  - name: CoverPlayer
+    uniqueID: 3334453233
     locked: 0
