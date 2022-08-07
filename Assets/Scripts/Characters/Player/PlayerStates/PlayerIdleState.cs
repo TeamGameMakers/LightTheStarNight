@@ -12,12 +12,6 @@ namespace Characters
             _core.Movement.SetVelocity(Vector2.zero);
         }
 
-        public override void PhysicsUpdate()
-        {
-            base.PhysicsUpdate();
-            
-        }
-
         public override void LogicUpdate()
         {
             base.LogicUpdate();

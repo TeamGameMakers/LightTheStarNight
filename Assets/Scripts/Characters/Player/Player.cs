@@ -19,12 +19,13 @@ namespace Characters
         
         public PlayerDataSO data;
         public RuntimeAnimatorController playerWithFlashLight;
+        public Vector2 environmentVelocity = Vector2.zero;
 
         #region States
     
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
-    
+
         #endregion
 
         private void Awake()
@@ -68,8 +69,8 @@ namespace Characters
             // 手电伤害判定
             if (_flashLight.enabled)
             {
-                _monstersColl = Core.Detection.ArcDetectionAll(_flashLight.transform, 
-                    data.lightRadius, data.lightAngle, data.layer);
+                _monstersColl = Core.Detection.ArcDetectionAll(Core.Detection.transform, 
+                    data.lightRadius, data.lightAngle * 0.5f, data.layer);
                 
                 foreach (var coll in _monstersColl)
                     Monster.Monsters[coll.GetInstanceID()].MonsterEnterLight(data.lightDamage, true);

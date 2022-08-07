@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Base;
-using Characters.Monsters;
 using Core;
 using Data;
 using UnityEngine;
@@ -21,11 +20,16 @@ namespace Characters
         internal MonsterDataSO Data => _data;
         internal Collider2D target;
         internal Transform SpawnTransform { get; private set; }
+
+        #region States
         
         public MonsterIdleState IdleState { get; private set; }
+        public MonsterReturnState ReturnState { get; private set; }
         public MonsterChaseState ChaseState { get; private set; }
         public MonsterPatrolState PatrolState { get; private set; }
         public MonsterDieState DieState { get; private set; }
+        
+        #endregion
         
         public List<Transform> PatrolPoints { get; private set; }
         public bool Patrol { get; private set; }
@@ -45,9 +49,10 @@ namespace Characters
             Monsters.Add(_coll.GetInstanceID(), this);
             
             StateMachine = new MonsterStateMachine();
-            IdleState = new MonsterIdleState(this);
-            ChaseState = new MonsterChaseState(this);
-            PatrolState = new MonsterPatrolState(this);
+            IdleState = new MonsterIdleState(this, "idle");
+            ReturnState = new MonsterReturnState(this, "return");
+            ChaseState = new MonsterChaseState(this, "chase");
+            PatrolState = new MonsterPatrolState(this, "patrol");
             DieState = new MonsterDieState(this);
         }
 

@@ -30,19 +30,18 @@ namespace Characters
 
         public override void PhysicsUpdate()
         {
-            if (!_monster.Hit)
-                _monster.target = _core.Detection.ArcDetection(_monster.transform, _data.checkRadius,
-                    _data.checkAngle, _data.checkLayer);
+            _monster.target = _core.Detection.ArcDetection(_core.Detection.transform, _data.checkRadius, 
+                _data.checkAngle, _data.checkLayer);
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            
+
             if (_data.healthPoint > 0 && _monster.Hit)
                 StateMachine.ChangeState(_monster.ChaseState);
             
-            if (_data.monsterType != MonsterDataSO.MonsterType.Boss && _data.healthPoint <= 0)
+            if (_data.healthPoint <= 0)
                 StateMachine.ChangeState(_monster.DieState);
         }
 
