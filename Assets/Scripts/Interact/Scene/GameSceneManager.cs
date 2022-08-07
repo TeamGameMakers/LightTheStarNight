@@ -1,3 +1,6 @@
+using System;
+using GM;
+using UI;
 using UnityEngine;
 
 namespace Interact
@@ -10,6 +13,16 @@ namespace Interact
     /// </summary>
     public class GameSceneManager : MonoBehaviour
     {
-        // TODO: 游戏场景初始化。    
+        public CanvasGroupFader fader;
+
+        private void Start()
+        {
+            fader.gameObject.SetActive(true);
+            GameManager.SwitchState(GameState.UI);
+            fader.Fade(0, f => {
+                GameManager.SwitchState(GameState.Playing);
+                Destroy(fader.gameObject);
+            });
+        }
     }
 }
