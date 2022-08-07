@@ -24,6 +24,7 @@ namespace Characters
         #region States
         
         public MonsterIdleState IdleState { get; private set; }
+        public MonsterReturnState ReturnState { get; private set; }
         public MonsterChaseState ChaseState { get; private set; }
         public MonsterPatrolState PatrolState { get; private set; }
         public MonsterDieState DieState { get; private set; }
@@ -48,9 +49,10 @@ namespace Characters
             Monsters.Add(_coll.GetInstanceID(), this);
             
             StateMachine = new MonsterStateMachine();
-            IdleState = new MonsterIdleState(this);
-            ChaseState = new MonsterChaseState(this);
-            PatrolState = new MonsterPatrolState(this);
+            IdleState = new MonsterIdleState(this, "idle");
+            ReturnState = new MonsterReturnState(this, "return");
+            ChaseState = new MonsterChaseState(this, "chase");
+            PatrolState = new MonsterPatrolState(this, "patrol");
             DieState = new MonsterDieState(this);
         }
 

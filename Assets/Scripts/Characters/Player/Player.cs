@@ -20,11 +20,13 @@ namespace Characters
         public PlayerDataSO data;
         public RuntimeAnimatorController playerWithFlashLight;
 
+        public Vector2 environmentVelocity = Vector2.zero;
+
         #region States
     
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
-    
+
         #endregion
 
         private void Awake()
