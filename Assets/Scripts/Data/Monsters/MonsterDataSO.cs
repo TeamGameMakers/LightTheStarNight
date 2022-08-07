@@ -23,6 +23,7 @@ namespace Data
         public float _patrolStopTime;
 
         [Header("Explosion")] 
+        public float explosionDistance;
         public float explosionRadius;
     }
 }

@@ -29,7 +29,10 @@ namespace Characters
                     _target = _monster.target.transform;
             }
 
-            if (!_monster.target && !_monster.HitByPlayer) 
+            if (Vector3.Distance(_monster.transform.position, _target.position) <= _data.explosionDistance)
+                StateMachine.ChangeState(_monster.ExplosionState);
+            
+            else if (!_monster.target && !_monster.HitByPlayer) 
                 StateMachine.ChangeState(_monster.IdleState);
         }
 

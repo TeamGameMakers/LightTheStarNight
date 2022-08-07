@@ -27,6 +27,7 @@ namespace Characters
         public MonsterReturnState ReturnState { get; private set; }
         public MonsterChaseState ChaseState { get; private set; }
         public MonsterPatrolState PatrolState { get; private set; }
+        public MonsterExplosionState ExplosionState { get; private set; }
         public MonsterDieState DieState { get; private set; }
         
         #endregion
@@ -52,6 +53,7 @@ namespace Characters
             IdleState = new MonsterIdleState(this, "idle");
             ReturnState = new MonsterReturnState(this, "return");
             ChaseState = new MonsterChaseState(this, "chase");
+            ExplosionState = new MonsterExplosionState(this, "explode");
             PatrolState = new MonsterPatrolState(this, "patrol");
             DieState = new MonsterDieState(this);
         }
