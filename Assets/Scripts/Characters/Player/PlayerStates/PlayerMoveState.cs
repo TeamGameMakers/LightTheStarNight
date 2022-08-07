@@ -41,12 +41,12 @@ namespace Characters
             if (InputHandler.NormInputX != 0)
             {
                 _core.Movement.SetVelocityX(InputHandler.NormInputX * _data.speed + _player.environmentVelocity.x);
-                _core.Movement.SetVelocityY(0);
+                _core.Movement.SetVelocityY(_player.environmentVelocity.y);
             }
             else if (InputHandler.NormInputY != 0)
             {
                 _core.Movement.SetVelocityY(InputHandler.NormInputY * _data.speed + _player.environmentVelocity.y);
-                _core.Movement.SetVelocityX(0);
+                _core.Movement.SetVelocityX(_player.environmentVelocity.x);
             }
         }
     }
