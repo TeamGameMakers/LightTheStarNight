@@ -19,7 +19,7 @@ namespace Interact
 
         protected virtual void Awake()
         {
-            itrtTip = transform.GetChild(0).GetComponent<InteractableTip>();
+            itrtTip = transform.GetChild(0)?.GetComponent<InteractableTip>();
         }
 
         protected virtual void Start()
@@ -29,7 +29,7 @@ namespace Interact
 
         protected virtual void Update()
         {
-            if (itrtTip.enabled && !itrtTip.FadeOutNow)
+            if (itrtTip != null && itrtTip.enabled && !itrtTip.FadeOutNow)
             {
                 var coll = Physics2D.
                     OverlapCircle(_checkPoint.position, _data.checkRadius, _data.checkLayer);
@@ -43,7 +43,7 @@ namespace Interact
         /// </summary>
         public virtual void ShowTip()
         {
-            if (!itrtTip.FadeInNow)
+            if (itrtTip != null && !itrtTip.FadeInNow)
                 itrtTip.Show();   
         }
 
