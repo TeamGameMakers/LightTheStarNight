@@ -11,6 +11,7 @@ namespace Interact
     {
         private Rigidbody2D _rb;
         private SpriteRenderer _renderer;
+        private StarLightInteractable _interactable;
         private float _time;
         private Collider2D _coll;
         private bool _changingBack;
@@ -25,15 +26,13 @@ namespace Interact
             _rb = GetComponent<Rigidbody2D>();
             _renderer = GetComponent<SpriteRenderer>();
             _coll = GetComponent<Collider2D>();
+            _interactable = GetComponentInChildren<StarLightInteractable>();
         }
 
         private void Start()
         {
             if (_canChange)
-            {
-                Debug.Log("can");
                 StartCoroutine(ChangeBack(5));
-            }
         }
 
         private void OnEnable()
@@ -89,7 +88,7 @@ namespace Interact
                 timer -= Time.deltaTime;
                 yield return null;
 
-                if (_time > 0)
+                if (_time > 0 || _interactable.isAbsorbing)
                 {
                     _changingBack = false;
                     yield break;
