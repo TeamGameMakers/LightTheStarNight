@@ -6,6 +6,8 @@ namespace Interact
 {
     public class StarLightInteractable : Interactable
     {
+        public RambleObject rambleObject;
+        
         protected override void Start()
         {
             base.Start();
@@ -17,6 +19,12 @@ namespace Interact
 
         public override void Interact(Interactor interactor)
         {
+            // 开启颤动
+            if (rambleObject != null)
+            {
+                rambleObject.Shake();
+            }
+            
             if (InputHandler.AbsorbPressed)
             {
                 Player player = interactor.gameObject.GetComponent<Player>();

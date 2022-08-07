@@ -1,6 +1,7 @@
 using System;
 using Base;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Interact
 {
@@ -14,17 +15,28 @@ namespace Interact
         private int m_lighten = 0;
 
         public const string LightenFullEvent = "StarLampLightenFullEvent";
-        
+
+        private Animator m_animator;
+        private static readonly int Brighten = Animator.StringToHash("Brighten");
+
+        private void Awake()
+        {
+            m_animator = GetComponent<Animator>();
+        }
+
         private void OnTriggerEnter2D(Collider2D col)
         {
-            // TODO: 检查进入的是星光
-            if (true)
+            if (col.CompareTag("StarLight"))
             {
                 ++m_lighten;
-                // TODO: 改变自身显示状态
+                // 改变自身显示状态
+                m_animator.SetTrigger(Brighten);
+                // 销毁
+                Destroy(col.gameObject);
                 
-                // 触发点亮事件
-                EventCenter.Instance.EventTrigger(LightenFullEvent);
+                // 完全亮起，触发点亮事件
+                if (m_lighten == needLighten)
+                    EventCenter.Instance.EventTrigger(LightenFullEvent);
             }
         }
     }
