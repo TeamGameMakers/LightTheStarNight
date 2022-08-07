@@ -12,6 +12,13 @@ namespace Characters
             _core.Movement.SetVelocity(Vector2.zero);
         }
 
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+            
+            _core.Movement.SetVelocity(_player.environmentVelocity);
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();

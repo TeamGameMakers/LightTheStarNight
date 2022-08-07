@@ -29,7 +29,7 @@ namespace Characters
             
             if (_hits.Count > 0)
             {
-                Debug.Log("GameOver!");
+                GM.GameManager.GameOver();
                 _monster.MonsterDie();
             }
         }
