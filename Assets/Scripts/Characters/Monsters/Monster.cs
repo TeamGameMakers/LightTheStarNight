@@ -56,6 +56,8 @@ namespace Characters
             _coll = GetComponent<Collider2D>();
             explosionCollider = GetComponentInChildren<CircleCollider2D>();
             Monsters.Add(_coll.GetInstanceID(), this);
+            _data = Instantiate(ResourceLoader.
+                Load<MonsterDataSO>(_data.isGood ? "Data/GoodMonsterData" : "Data/BadMonsterData"));
             
             StateMachine = new MonsterStateMachine();
             IdleState = new MonsterIdleState(this, "idle");
@@ -72,7 +74,12 @@ namespace Characters
 
             if (!Patrol)
             {
-                SpawnTransform = Instantiate(new GameObject("Spawn Point"), transform.parent).transform;
+                var parent = transform;
+                var go = new GameObject("Spawn Point");
+                
+                SpawnTransform = go.transform;
+                SpawnTransform.position = parent.position;
+                SpawnTransform.parent = parent.parent;
                 SpawnTransform.right = Core.Detection.transform.right;
             }
 
@@ -91,7 +98,9 @@ namespace Characters
         {
             Core.LogicUpdate();
             StateMachine.CurrentState.LogicUpdate();
-            MonsterExitFlashLight();
+            
+            if (Hit)
+                MonsterExitFlashLight();
         }
 
         private void OnDestroy()
@@ -131,11 +140,12 @@ namespace Characters
         /// </summary>
         private void MonsterExitFlashLight()
         {
-            if (EventCenter.Instance.FuncTrigger<Collider2D, bool>("LightOnMonster", _coll)) return;
+            if (EventCenter.Instance.EventTrigger<Collider2D, bool>("LightOnMonster", _coll)) return;
             Hit = false;
             HitByPlayer = false;
         }
-
+        
+        // Animation Event
         public void Explode() => ExplosionState.Explode();
         
 
@@ -146,13 +156,17 @@ namespace Characters
             _data.isDead = true;
             
             // 生成星光
-            var go = ResourceLoader.Load<GameObject>("Prefabs/Interactable/StarLight");
-            go.transform.position = transform.position;
+            if (StateMachine.CurrentState == DieState)
+            {
+                var go = ResourceLoader.Load<GameObject>("Prefabs/Interactable/StarLight_T");
+                go.transform.position = transform.position;
+            }
 
             var parent = curTransform.parent;
             curTransform.parent = null;
             
             Destroy(parent.gameObject);
+            Destroy(SpawnTransform.gameObject);
             Destroy(curTransform.gameObject);
         }
 

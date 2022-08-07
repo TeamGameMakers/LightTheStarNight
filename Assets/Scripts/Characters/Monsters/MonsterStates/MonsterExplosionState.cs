@@ -29,7 +29,21 @@ namespace Characters
             
             if (_hits.Count > 0)
             {
-                GM.GameManager.GameOver();
+                if (_data.isGood)
+                {
+                    var monster = Monster.Monsters[_monster.target.GetInstanceID()];
+                    monster.MonsterDie();
+                }
+                
+                foreach (var coll in _hits)
+                {
+                    if (coll.CompareTag("Player"))
+                    {
+                        GM.GameManager.GameOver();
+                        break;
+                    }
+                }
+                
                 _monster.MonsterDie();
             }
         }

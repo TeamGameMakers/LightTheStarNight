@@ -56,6 +56,7 @@ namespace GM
         public static void GameOver()
         {
             // TODO: 弹出游戏结束面板
+            Debug.Log("GameOver");
         }
     }
 }

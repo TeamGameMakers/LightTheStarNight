@@ -32,8 +32,9 @@ namespace Core
         /// <param name="radius"></param>
         /// <param name="angle">扇形角度(半角)</param>
         /// <param name="layer"></param>
+        /// <param name="compareTag"></param>
         /// <returns></returns>
-        public List<Collider2D> ArcDetectionAll(Transform origin, float radius, float angle, LayerMask layer)
+        public List<Collider2D> ArcDetectionAll(Transform origin, float radius, float angle, LayerMask layer, string compareTag = "Untagged")
         {
             List<Collider2D> result = new List<Collider2D>();
             
@@ -42,7 +43,8 @@ namespace Core
             for (int i = 0; i < _num; i++)
             {
                 if (Utils.IsInArcSector(transform.right, 
-                        _objects[i].transform.position - transform.position, angle))
+                        _objects[i].transform.position - transform.position, angle)
+                    && _objects[i].CompareTag(compareTag))
                     result.Add(_objects[i]);
             }
 
