@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   speed: 3
-  hasFlashLight: 1
+  hasFlashLight: 0
   lightRadius: 3
   lightAngle: 100
   lightDamage: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
     m_Bits: 128
   maxPower: 30
   powerUsingSpeed: 1
-  powerRemaining: 27.015429
+  powerRemaining: 26.419334
   flashLightOn: {fileID: 8300000, guid: c4beaeec9f2c8394c85afb9b12683982, type: 3}
   flashLightOff: {fileID: 8300000, guid: 6419201899bfe494ebac0a6049dde8b8, type: 3}
   absorbPower: {fileID: 8300000, guid: e5f0fdee1212b99419e609de3f951dfc, type: 3}
