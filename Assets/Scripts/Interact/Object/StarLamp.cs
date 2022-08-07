@@ -41,35 +41,36 @@ namespace Interact
 
         private void Update()
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                ++m_lighten;
-                // 触发音效
-                switch (m_lighten)
-                {
-                    case 1:
-                        m_audioSource.clip = ResourceLoader.Load<AudioClip>("Audio/starlight1");
-                        m_audioSource.Play();
-                        break;
-                    case 2:
-                        m_audioSource.clip = ResourceLoader.Load<AudioClip>("Audio/starlight2");
-                        m_audioSource.Play();
-                        break;
-                    case 3:
-                        m_audioSource.clip = ResourceLoader.Load<AudioClip>("Audio/starlight3");
-                        m_audioSource.Play();
-                        m_readyPlayLightClip = true;
-                        break;
-                }
-                // 改变自身显示状态
-                m_animator.SetTrigger(Brighten);
-                
-                // 完全亮起，触发点亮事件
-                if (m_lighten == needLighten)
-                {
-                    EventCenter.Instance.EventTrigger(LightenFullEvent);
-                }
-            }
+            // if (Mouse.current.leftButton.wasPressedThisFrame)
+            // {
+            //     ++m_lighten;
+            //     // 触发音效
+            //     switch (m_lighten)
+            //     {
+            //         case 1:
+            //             m_audioSource.clip = ResourceLoader.Load<AudioClip>("Audio/starlight1");
+            //             m_audioSource.Play();
+            //             break;
+            //         case 2:
+            //             m_audioSource.clip = ResourceLoader.Load<AudioClip>("Audio/starlight2");
+            //             m_audioSource.Play();
+            //             break;
+            //         case 3:
+            //             m_audioSource.clip = ResourceLoader.Load<AudioClip>("Audio/starlight3");
+            //             m_audioSource.Play();
+            //             m_readyPlayLightClip = true;
+            //             break;
+            //     }
+            //     // 改变自身显示状态
+            //     m_animator.SetTrigger(Brighten);
+            //     
+            //     // 完全亮起，触发点亮事件
+            //     if (m_lighten == needLighten)
+            //     {
+            //         EventCenter.Instance.EventTrigger(LightenFullEvent);
+            //     }
+            // }
+            
             // 检查播放最终音效
             if (m_readyPlayLightClip && m_audioSource.time >= 1.3)
             {
