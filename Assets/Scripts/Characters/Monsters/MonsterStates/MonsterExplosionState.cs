@@ -10,6 +10,10 @@ namespace Characters
         
         public MonsterExplosionState(Monster monster, string name = null) : base(monster, name) { }
 
+        public override void LogicUpdate()
+        {
+        }
+
         public override void Enter()
         {
             base.Enter();

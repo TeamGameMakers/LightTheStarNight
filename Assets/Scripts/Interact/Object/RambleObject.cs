@@ -31,13 +31,7 @@ namespace Interact
         
         protected virtual void Awake()
         {
-            Vector3 pos = transform.position;
-            float t = size.x / 2;
-            minX = pos.x - t;
-            maxX = pos.x + t;
-            t = size.y / 2;
-            minY = pos.y - t;
-            maxY = pos.y + t;
+            UpdatePosition();
         }
         
         protected virtual void Update()
@@ -84,6 +78,17 @@ namespace Interact
         {
             Debug.Log("保持抖动");
             rambleOnce = true;
+        }
+
+        public void UpdatePosition()
+        {
+            Vector3 pos = transform.position;
+            float t = size.x / 2;
+            minX = pos.x - t;
+            maxX = pos.x + t;
+            t = size.y / 2;
+            minY = pos.y - t;
+            maxY = pos.y + t;
         }
     }
 }

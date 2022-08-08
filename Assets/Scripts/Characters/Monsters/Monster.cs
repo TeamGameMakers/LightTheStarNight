@@ -3,6 +3,7 @@ using Base;
 using Base.Resource;
 using Core;
 using Data;
+using Interact;
 using UnityEngine;
 using Utilities;
 
@@ -160,8 +161,14 @@ namespace Characters
             {
                 var go = ResourceLoader.Load<GameObject>("Prefabs/Interactable/StarLight_T");
                 go.transform.position = transform.position;
+                go.GetComponent<RambleObject>().UpdatePosition();
+                // Vector3 pos = transform.position;
+                // ResourceLoader.LoadAsync<GameObject>("Prefabs/Interactable/StarLight_T", o => {
+                //     o.transform.position = pos;
+                //     o.transform.GetComponent<RambleObject>().UpdatePosition();
+                // });
             }
-
+            
             var parent = curTransform.parent;
             curTransform.parent = null;
             
