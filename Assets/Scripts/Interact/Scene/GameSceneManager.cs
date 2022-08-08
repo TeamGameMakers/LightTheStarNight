@@ -25,11 +25,14 @@ namespace Interact
 
         public TextMeshProUGUI countTmp;
         
+        [SerializeField]
+        [Tooltip("点亮的灯塔数")]
         private int m_brightenCount = 0;
 
         public AudioClip brightenClip; 
             
         private AudioSource m_audioSource;
+        private bool changedMusic = false;
 
         private void Awake()
         {
@@ -57,8 +60,13 @@ namespace Interact
                 {
                     obj.SetActive(true);
                 }
-                m_audioSource.Stop();
-                Invoke(nameof(ChangeBgm), 0.2f);
+
+                if (!changedMusic)
+                {
+                    changedMusic = true;
+                    m_audioSource.clip = brightenClip;
+                    m_audioSource.Play();
+                }
             }
             else if (m_brightenCount == 5)
             {

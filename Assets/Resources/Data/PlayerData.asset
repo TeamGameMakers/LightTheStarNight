@@ -17,7 +17,7 @@ MonoBehaviour:
   lightRadius: 3
   lightAngle: 100
   lightDamage: 1
-  transformTime: 5
+  transformTime: 3
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
