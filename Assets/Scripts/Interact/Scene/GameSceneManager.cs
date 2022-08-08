@@ -60,6 +60,11 @@ namespace Interact
                 m_audioSource.Stop();
                 Invoke(nameof(ChangeBgm), 0.2f);
             }
+            else if (m_brightenCount == 5)
+            {
+                // 弹出通关画面
+                GameUiManager.Instance.ShowPanel(GameUiManager.Instance.successPanel);
+            }
         }
 
         private void CountBrighten()

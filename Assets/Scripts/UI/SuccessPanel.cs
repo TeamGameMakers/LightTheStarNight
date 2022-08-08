@@ -28,8 +28,7 @@ namespace UI
                 case "RestartBtn":
                     audioSource.Play();
                     // 重置玩家
-                    GameManager.ResetPlayer();
-                    gameObject.SetActive(false);
+                    SceneLoader.LoadScene(SceneLoader.CurrentScene);
                     break;
                 case "BackStartBtn":
                     audioSource.Play();
