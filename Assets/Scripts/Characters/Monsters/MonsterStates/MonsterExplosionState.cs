@@ -45,7 +45,7 @@ namespace Characters
                         if (coll.CompareTag("Player"))
                         {
                             hitPlayer = true;
-                            _player = coll.GetComponent<Player>();
+                            _player = coll.GetComponentInParent<Player>();
                             break;
                         }
                     }
