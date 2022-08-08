@@ -15,9 +15,12 @@ namespace UI
         public AudioSource audioSource;
         protected RawImage image;
 
+        protected AudioSource deathSource;
+
         protected override void Awake()
         {
             base.Awake();
+            deathSource = GetComponent<AudioSource>();
             image = transform.Find("Image").GetComponent<RawImage>();
         }
 
@@ -29,6 +32,7 @@ namespace UI
         protected virtual void OnEnable()
         {
             GameManager.SwitchState(GameState.UI, false);
+            deathSource.Play();
         }
 
         protected override void OnClick(string btnName)
