@@ -44,17 +44,12 @@ namespace Characters
                         Debug.Log(coll);
                         if (coll.CompareTag("Player"))
                         {
+                            InputHandler.SwitchToUI();
                             hitPlayer = true;
                             _player = coll.GetComponentInParent<Player>();
                             break;
                         }
                     }
-                }
-                else if (!_data.isGood)
-                {
-                    hitPlayer = true;
-                    InputHandler.SwitchToUI();
-                    _player = _monster.target.GetComponent<Player>();
                 }
             }
 
