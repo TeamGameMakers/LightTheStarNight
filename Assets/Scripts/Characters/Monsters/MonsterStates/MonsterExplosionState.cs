@@ -44,6 +44,7 @@ namespace Characters
                         Debug.Log(coll);
                         if (coll.CompareTag("Player"))
                         {
+                            InputHandler.SwitchToUI();
                             hitPlayer = true;
                             _player = coll.GetComponentInParent<Player>();
                             break;
