@@ -50,6 +50,12 @@ namespace Characters
                         }
                     }
                 }
+                else if (!_data.isGood)
+                {
+                    hitPlayer = true;
+                    InputHandler.SwitchToUI();
+                    _player = _monster.target.GetComponent<Player>();
+                }
             }
 
             if (_explodeOver)

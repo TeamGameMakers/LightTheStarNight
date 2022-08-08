@@ -12,7 +12,7 @@ namespace Characters
             base.Enter();
             
             _core.Movement.SetVelocity(Vector2.zero);
-
+            
             GM.GameManager.GameOver(_player.isGrounded ?  _data.explode : _data.fall);
         }
     }
