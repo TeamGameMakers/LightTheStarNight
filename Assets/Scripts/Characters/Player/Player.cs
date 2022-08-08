@@ -3,6 +3,7 @@ using Base;
 using Base.Resource;
 using Core;
 using Data;
+using GM;
 using Interact;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -45,6 +46,10 @@ namespace Characters
             StateMachine = new PlayerStateMachine();
             IdleState = new PlayerIdleState(this, "idle");
             MoveState = new PlayerMoveState(this, "move");
+            
+            // 注册出生位置
+            GameManager.player = transform;
+            GameManager.originalPlayerPos = transform.position;
         }
 
         private void OnEnable()

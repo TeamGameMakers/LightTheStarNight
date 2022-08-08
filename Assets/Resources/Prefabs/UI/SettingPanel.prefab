@@ -594,3 +594,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchState: 1
+  audioSource: {fileID: 0}

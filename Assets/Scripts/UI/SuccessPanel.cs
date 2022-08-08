@@ -8,12 +8,11 @@ namespace UI
 {
     public class SuccessPanel : BasePanel
     {
-        protected AudioSource audioSource;
+        public AudioSource audioSource;
 
         protected override void Awake()
         {
             base.Awake();
-            audioSource = GetComponent<AudioSource>();
         }
 
         protected virtual void OnEnable()
@@ -28,8 +27,9 @@ namespace UI
             {
                 case "RestartBtn":
                     audioSource.Play();
-                    // 重新加载场景
-                    SceneLoader.LoadScene(SceneLoader.CurrentScene);
+                    // 重置玩家
+                    GameManager.ResetPlayer();
+                    gameObject.SetActive(false);
                     break;
                 case "BackStartBtn":
                     audioSource.Play();

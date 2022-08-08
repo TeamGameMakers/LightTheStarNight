@@ -10,15 +10,18 @@ namespace UI
 {
     public class FailedPanel : BasePanel
     {
-        protected AudioSource audioSource;
+        public AudioSource audioSource;
         protected RawImage image;
 
         protected override void Awake()
         {
             base.Awake();
-            audioSource = GetComponent<AudioSource>();
             image = transform.Find("Image").GetComponent<RawImage>();
-            // TODO: 根据失败清空不同，设置不同的图片。
+        }
+
+        public void ChangeImage(Texture sprite)
+        {
+            image.texture = sprite;
         }
 
         protected virtual void OnEnable()
@@ -33,8 +36,9 @@ namespace UI
             {
                 case "ContinueBtn":
                     audioSource.Play();
-                    // 重新加载场景
-                    SceneLoader.LoadScene(SceneLoader.CurrentScene);
+                    // 重置玩家位置
+                    GameManager.ResetPlayer();
+                    gameObject.SetActive(false);
                     break;
                 case "QuitBtn":
                     audioSource.Play();

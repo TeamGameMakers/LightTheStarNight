@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Characters;
+using UI;
 using UnityEngine;
 
 namespace GM
@@ -22,6 +24,10 @@ namespace GM
         private static Stack<GameState> m_stateRecord = new Stack<GameState>();
 
         public static event Action<GameState> SwitchStateEvent;
+
+        public static Transform player;
+        // 玩家出生点
+        public static Vector3 originalPlayerPos;
 
         public static void ResumeState()
         {
@@ -55,8 +61,14 @@ namespace GM
 
         public static void GameOver()
         {
-            // TODO: 弹出游戏结束面板
+            // TODO: 需要传入死亡原因
             Debug.Log("GameOver");
+            GameUiManager.Instance.ShowPanel(GameUiManager.Instance.failedPanel);
+        }
+
+        public static void ResetPlayer()
+        {
+            player.position = originalPlayerPos;
         }
     }
 }

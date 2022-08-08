@@ -11,11 +11,24 @@ namespace UI
 
         private Image _image;
 
+        public Button settingBtn;
+        private AudioSource m_audioSource;
+
         protected override void Awake()
         {
             base.Awake();
 
             _image = GetControl<Image>("Image");
+
+            m_audioSource = GetComponent<AudioSource>();
+        }
+
+        protected virtual void Start()
+        {
+            settingBtn.onClick.AddListener( () => {
+                m_audioSource.Play();
+                GameUiManager.Instance.ShowPanel(GameUiManager.Instance.settingPanel);
+            });
         }
 
         protected void OnEnable()
