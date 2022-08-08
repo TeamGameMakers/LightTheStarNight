@@ -174,7 +174,8 @@ namespace Characters
             curTransform.parent = null;
             
             Destroy(parent.gameObject);
-            Destroy(SpawnTransform.gameObject);
+            if (!Patrol)
+                Destroy(SpawnTransform.gameObject);
             Destroy(curTransform.gameObject);
         }
 

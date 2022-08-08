@@ -19,6 +19,8 @@ namespace Characters
             _core.AIMovement.StopMoving();
         }
 
+        public override void LogicUpdate() { }
+
         private IEnumerator MonsterFade(float fadeSpeed)
         {
             var fadeColor = Color.white;
