@@ -1,6 +1,7 @@
 using Base;
 using Core;
 using Data;
+using Interact;
 using UnityEngine;
 
 namespace Characters
@@ -14,10 +15,12 @@ namespace Characters
         protected readonly GameCore _core;
         protected readonly PlayerDataSO _data;
 
-        protected PlayerState(Player player, string name) : base(player.StateMachine)
+        protected PlayerState(Player player, string name = null) : base(player.StateMachine)
         {
             _player = player;
-            _animBoolHash = Animator.StringToHash(name);
+            
+            if (name != null)
+                _animBoolHash = Animator.StringToHash(name);
 
             _anim = player.Anim;
             _core = player.Core;
@@ -27,12 +30,22 @@ namespace Characters
 
         public override void Enter()
         {
-            _anim.SetBool(_animBoolHash, true);
+            if (_animBoolHash != 0)
+                _anim.SetBool(_animBoolHash, true);
+        }
+
+        public override void LogicUpdate()
+        {
+            if (!_player.isGrounded && !_player.isOnPlanet)
+            {
+                StateMachine.ChangeState(_player.DieState);
+            }
         }
 
         public override void Exit()
         {
-            _anim.SetBool(_animBoolHash, false);
+            if (_animBoolHash != 0)
+                _anim.SetBool(_animBoolHash, false);
         }
     }
 }

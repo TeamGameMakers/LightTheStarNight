@@ -25,5 +25,10 @@ namespace Data
         public AudioClip flashLightOn;
         public AudioClip flashLightOff;
         public AudioClip absorbPower;
+
+        [Header("Die")] 
+        public Texture fall;
+        public Texture explode;
+
     }
 }

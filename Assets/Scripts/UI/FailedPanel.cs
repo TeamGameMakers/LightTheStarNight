@@ -1,7 +1,9 @@
 using System;
 using System.ComponentModel;
 using Base.Scene;
+using Characters;
 using GM;
+using Interact;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +40,9 @@ namespace UI
                     audioSource.Play();
                     // 重置玩家位置
                     GameManager.ResetPlayer();
+                    // GroundCheck.isGrounded = true;
+
+                    GameManager.player.GetComponent<Player>().isGrounded = true;
                     gameObject.SetActive(false);
                     break;
                 case "QuitBtn":

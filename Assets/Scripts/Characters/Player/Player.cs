@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Base;
 using Base.Resource;
@@ -25,11 +26,15 @@ namespace Characters
         public PlayerDataSO data;
         public RuntimeAnimatorController playerWithFlashLight;
         public Vector2 environmentVelocity = Vector2.zero;
+        public LayerMask groundLayer;
+        public bool isGrounded;
+        public bool isOnPlanet;
 
         #region States
     
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
+        public PlayerDieState DieState { get; private set; }
 
         #endregion
 
@@ -46,6 +51,7 @@ namespace Characters
             StateMachine = new PlayerStateMachine();
             IdleState = new PlayerIdleState(this, "idle");
             MoveState = new PlayerMoveState(this, "move");
+            DieState = new PlayerDieState(this);
             
             // 注册出生位置
             GameManager.player = transform;
@@ -61,13 +67,15 @@ namespace Characters
         private void Start()
         {
             StateMachine.Initialize(IdleState);
-            GM.GameManager.SetPlayerTransform(transform);
+            GameManager.SetPlayerTransform(transform);
             
             // 手电筒
             _flashLight.pointLightOuterRadius = data.lightRadius;
             _flashLight.pointLightOuterAngle = data.lightAngle;
             _flashLight.pointLightInnerAngle = data.lightAngle - 10;
             _flashLight.enabled = false;
+
+            isGrounded = true;
         }
 
         private void FixedUpdate()
@@ -93,7 +101,25 @@ namespace Characters
             EventCenter.Instance.RemoveEventListener<Collider2D, bool>("LightOnMonster", LightOnMonster);
             EventCenter.Instance.RemoveEventListener<Collider2D, bool>("LightOnStarLight", LightOnStarLight);
         }
-        
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag("Ground"))
+                isGrounded = true;
+
+            if (col.CompareTag("Planet"))
+                isOnPlanet = true;
+        }
+
+        private void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.CompareTag("Ground"))
+                isGrounded = false;
+            
+            if (col.CompareTag("Planet"))
+                isOnPlanet = false;
+        }
+
         private void FlashLightControl()
         {
             if (InputHandler.LightPressed && data.hasFlashLight)
@@ -156,6 +182,11 @@ namespace Characters
         {
             _audio.clip = clip;
             _audio.Play();
+        }
+
+        public void PlayerDie()
+        {
+            StateMachine.ChangeState(DieState);
         }
     }
 }

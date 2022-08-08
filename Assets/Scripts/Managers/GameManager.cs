@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Characters;
+using Interact;
 using UI;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace GM
     public static class GameManager
     {
         public static Transform Player { get; private set; }
-        
+
         public static void SetPlayerTransform(Transform player) => Player = player;
 
         private static GameState m_currentState = GameState.Playing;
@@ -59,16 +60,19 @@ namespace GM
             SwitchStateEvent?.Invoke(state);
         }
 
-        public static void GameOver()
+        public static void GameOver(Texture gameOverSprite)
         {
-            // TODO: 需要传入死亡原因
-            Debug.Log("GameOver");
             GameUiManager.Instance.ShowPanel(GameUiManager.Instance.failedPanel);
+            
+            // 传入死亡原因
+            GameUiManager.Instance.failedPanel.ChangeImage(gameOverSprite);
         }
 
         public static void ResetPlayer()
         {
             player.position = originalPlayerPos;
+            var playerComp = player.GetComponent<Player>();
+            playerComp.StateMachine.ChangeState(playerComp.IdleState);
         }
     }
 }
