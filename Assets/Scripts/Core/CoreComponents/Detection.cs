@@ -54,7 +54,7 @@ namespace Core
         public Collider2D ArcDetection(Transform origin, float radius, float angle, LayerMask layer)
         {
             var coll = CircleDetection(origin, radius, layer);
-
+            
             if (!coll || !Utils.IsInArcSector(transform.right, 
                     coll.transform.position - transform.position, angle)) 
                 coll = null;

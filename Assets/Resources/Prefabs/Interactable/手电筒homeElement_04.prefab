@@ -137,6 +137,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -4522919573520900187, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
     - target: {fileID: 5847301011352630590, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
+      propertyPath: m_text
+      value: "\u6309 [E] \u62FE\u53D6\u624B\u7535\u7B52"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847301011352630590, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
+      propertyPath: m_margin.z
+      value: -0.5777674
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847301011352630590, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: ea70bfccf61be4b49bd652ed7688920f, type: 2}
@@ -210,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847301011352630591, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.07999992
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 5847301011352630591, guid: 6776bc3bfd443a5448a40ce73966ca0c, type: 3}
       propertyPath: m_AnchoredPosition.y

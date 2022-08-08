@@ -148,6 +148,7 @@ namespace Characters
         
         // Animation Event
         public void Explode() => ExplosionState.Explode();
+        public void ExplodeOver() => ExplosionState.ExplodeOver();
         
 
         public void MonsterDie()

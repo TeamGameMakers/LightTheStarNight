@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Transform
   - StarLight
+  - Ground
+  - Planet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Trigger
   - Interactable
   - Pushable
-  - 
+  - Ground
   - 
   - 
   - 

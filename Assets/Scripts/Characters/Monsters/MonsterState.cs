@@ -30,8 +30,7 @@ namespace Characters
 
         public override void PhysicsUpdate()
         {
-            _monster.target = _core.Detection.ArcDetection(_core.Detection.transform, _data.checkRadius, 
-                _data.checkAngle, _data.checkLayer);
+            _monster.target = _core.Detection.CircleDetection(_core.Detection.transform, _data.checkRadius, _data.checkLayer);
         }
 
         public override void LogicUpdate()

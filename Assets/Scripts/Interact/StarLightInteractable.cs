@@ -9,6 +9,7 @@ namespace Interact
     {
         public RambleObject rambleObject;
         public bool isAbsorbing;
+        private Player _player;
         
         protected override void Start()
         {
@@ -17,6 +18,8 @@ namespace Interact
             {
                 Destroy(gameObject);
             }
+            
+            _player = FindObjectOfType<Player>();
         }
 
         protected override void Update()
@@ -32,18 +35,16 @@ namespace Interact
             isAbsorbing = true;
             
             // 开启颤动
-            if (rambleObject != null)
+            if (rambleObject && _player.data.hasFlashLight)
             {
                 rambleObject.Shake();
             }
             
-            if (InputHandler.AbsorbPressed)
+            if (InputHandler.AbsorbPressed && _player.data.hasFlashLight)
             {
-                Player player = interactor.gameObject.GetComponent<Player>();
                 // 获取星光
-
-                player.data.powerRemaining = player.data.maxPower;
-                player.PlayerAudioClip(player.data.absorbPower);
+                _player.data.powerRemaining = _player.data.maxPower;
+                _player.PlayerAudioClip(_player.data.absorbPower);
 
                 var curTransform = transform;
                 var parent = curTransform.parent;

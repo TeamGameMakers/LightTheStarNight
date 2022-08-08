@@ -12,6 +12,8 @@ namespace Interact
         {
             if (other.CompareTag("Player"))
             {
+                GroundCheck.isGrounded = true;
+                
                 Debug.Log("Player 在移动平台上");
                 if (player == null)
                     player = other.gameObject.GetComponent<Player>();
