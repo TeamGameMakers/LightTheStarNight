@@ -9,7 +9,7 @@ namespace Interact
     public class LayerUpperObject : MonoBehaviour
     {
         [Tooltip("会自动获取第一个 parent 的 renderer")]
-        public SpriteRenderer renderer;
+        public new SpriteRenderer renderer;
 
         public string defaultSortingLayer = "CoverByPlayer";
 
