@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Base;
 using GM;
+using TMPro;
 using UI;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ namespace Interact
 
         public List<GameObject> brightenObjs = new List<GameObject>();
 
+        public TextMeshProUGUI countTmp;
+        
         private int m_brightenCount = 0;
 
         private void Start()
@@ -51,6 +54,7 @@ namespace Interact
         private void CountBrighten()
         {
             ++m_brightenCount;
+            countTmp.SetText(m_brightenCount.ToString());
         }
     }
 }
