@@ -27,6 +27,15 @@ namespace Interact
         
         private int m_brightenCount = 0;
 
+        public AudioClip brightenClip; 
+            
+        private AudioSource m_audioSource;
+
+        private void Awake()
+        {
+            m_audioSource = GetComponent<AudioSource>();
+        }
+
         private void Start()
         {
             fader.gameObject.SetActive(true);
@@ -48,6 +57,8 @@ namespace Interact
                 {
                     obj.SetActive(true);
                 }
+                m_audioSource.Stop();
+                Invoke(nameof(ChangeBgm), 0.2f);
             }
         }
 
@@ -55,6 +66,13 @@ namespace Interact
         {
             ++m_brightenCount;
             countTmp.SetText(m_brightenCount.ToString());
+        }
+
+        private void ChangeBgm()
+        {
+            // 更换背景音乐
+            m_audioSource.clip = brightenClip;
+            m_audioSource.Play();
         }
     }
 }
