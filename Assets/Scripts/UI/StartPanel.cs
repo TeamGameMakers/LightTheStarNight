@@ -26,7 +26,7 @@ namespace UI
                     audioSource.Play();
                     // 切换到游戏场景
                     fader.Fade(1, f => {
-                        SceneLoader.LoadScene("GameScene");
+                        SceneLoader.LoadScene("TestFinal");
                     });
                     break;
                 case "QuitBtn":
